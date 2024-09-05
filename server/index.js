@@ -1,8 +1,7 @@
-import bodyParser from 'body-parser';
 import express from 'express'
 import helmet from "helmet"
 import dotenv from "dotenv"
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 import cors from "cors"
 import bodyParser from 'body-parser';
 import multer from "multer"
@@ -16,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 dotenv.config();
 
-const port = 3000; 
+const port = process.env.PORT || 3001 
 const app = express(); 
 
 
@@ -46,11 +45,26 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 
+
+//A simple route
 app.use((req, res) => {
     res.send("Hello World")
 })
 
-app.listen(port, () => {
-    console.log(`Server is running on PORT: ${port}`);
+
+mongoose.connect(process.env.MONGO_URL, {
+    // useNewUrlParser: true, 
+    // useUnifiedTopology: true
+}).then(() => {
+    app.listen(port, () => {
+        console.log(`Server is running on PORT: ${port}`);
+        
+    })
+}).catch((err) => console.log(`${err} did not`)
+)
+
+// Actual server running 
+// app.listen(port, () => {
+//     console.log(`Server is running on PORT: ${port}`);
     
-})
+// })
