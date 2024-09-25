@@ -51,6 +51,10 @@ app.use((req, res) => {
     res.send("Hello World")
 })
 
+// app.post("/auth/registor", upload.single("picture"), register)
+
+
+// Connection to the database
 mongoose.connect(process.env.MONGO_URL, {
     // useNewUrlParser: true, 
     // useUnifiedTopology: true
