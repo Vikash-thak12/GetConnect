@@ -9,6 +9,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import authRoute from './routes/auth.js';
 import userRoute from './routes/user.js';
+import postRoutes from "./routes/posts.js"
 import { verifyToken } from './middleware/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -39,9 +40,15 @@ app.get('/', (req, res) => {
 });
 
 
+
+
+// app.post("/posts", verifyToken, upload.single("picture"), createPost);
+
+
 // Routes
-app.use('/auth', authRoute)
+app.use("/auth", authRoute)
 app.use("/users", userRoute)
+app.use("/posts", postRoutes)
 
 // Connection to the database
 mongoose.connect(process.env.MONGO_URL)
