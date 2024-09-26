@@ -11,7 +11,8 @@ import authRoute from './routes/auth.js';
 import userRoute from './routes/user.js';
 import postRoutes from "./routes/posts.js"
 import { verifyToken } from './middleware/auth.js';
-import { createpost } from './controllers/posts.js';
+import { createPost } from './controllers/posts.js';
+import multer from 'multer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,8 +43,18 @@ app.get('/', (req, res) => {
 
 
 
-
-// app.post("/posts", verifyToken, upload.single("picture"), createpost);
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "public/assets");
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  });
+  const upload = multer({ storage });
+  
+  /* ROUTES WITH FILES */
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 
 // Routes

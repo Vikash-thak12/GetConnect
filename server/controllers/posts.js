@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import Post from "../models/Post.js"
 
 
-export const createpost = async (req, res) => {
+export const createPost = async (req, res) => {
     try {
         const { userId, description, location } = req.body;
         const user = await User.findById(userId)
@@ -22,7 +22,7 @@ export const createpost = async (req, res) => {
         await newPost.save();
 
         const post = await Post.find();
-        res.status(200).json(post)
+        res.status(201).json(post)
 
     } catch (error) {
         res.status(400).json({ message: error.message })
