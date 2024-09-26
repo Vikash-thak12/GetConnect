@@ -11,6 +11,7 @@ import authRoute from './routes/auth.js';
 import userRoute from './routes/user.js';
 import postRoutes from "./routes/posts.js"
 import { verifyToken } from './middleware/auth.js';
+import { createpost } from './controllers/posts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
 
 
 
-// app.post("/posts", verifyToken, upload.single("picture"), createPost);
+// app.post("/posts", verifyToken, upload.single("picture"), createpost);
 
 
 // Routes
