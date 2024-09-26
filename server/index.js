@@ -73,6 +73,6 @@ mongoose.connect(process.env.MONGO_URL)
 // Actual server running
 app.listen(port, () => {
     console.log(`Server is running on PORT: ${port}`);
-    User.insertMany(users)
-    Post.insertMany(posts)
+    // User.insertMany(users)
+    // Post.insertMany(posts)
 });
