@@ -55,11 +55,11 @@ app.use((req, res) => {
 
 
 // Connection to the database
-mongoose.connect(process.env.MONGO_URL, {
-    // useNewUrlParser: true, 
-    // useUnifiedTopology: true
-})
-    .then(console.log("Connection to the database is done"))
+// mongoose.connect(process.env.MONGO_URL, {
+//     // useNewUrlParser: true, 
+//     // useUnifiedTopology: true
+// })
+//     .then(console.log("Connection to the database is done"))
 
 
 // mongoose.connect(process.env.MONGO_URL, {
@@ -70,8 +70,7 @@ mongoose.connect(process.env.MONGO_URL, {
 //         console.log(`Connection successful to the database`);
 
 //     })
-// }).catch((err) => console.log(`${err} did not`)
-// )
+
 
 // Actual server running 
 app.listen(port, () => {
