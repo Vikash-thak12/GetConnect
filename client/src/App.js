@@ -1,16 +1,19 @@
 import './App.css';
-import HomePage from './scenes/HomePage/index.jsx';
-import Navbar from './scenes/Navbar/index.jsx';
-import ProfilePage from './scenes/ProfilePage/index.jsx';
-import LoginPage from './scenes/LoginPage/index.jsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from './scenes/LoginPage';
+import HomePage from './scenes/HomePage';
+import ProfilePage from './scenes/ProfilePage';
 
 function App() {
   return (
     <div className="app">
-      <Navbar />
-      <LoginPage />
-      <HomePage />
-      <ProfilePage />
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element={ <LoginPage />} />
+        <Route path='/home' element={ <HomePage />} />
+        <Route path='/profile/:userId' element={ <ProfilePage />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
