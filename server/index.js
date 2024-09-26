@@ -8,6 +8,7 @@ import multer from "multer"
 import morgan from "morgan"
 import path from 'path'
 import { fileURLToPath } from 'url';
+import { registor } from './controllers/auth.js';
 
 
 
@@ -51,7 +52,7 @@ app.use((req, res) => {
     res.send("Hello World")
 })
 
-// app.post("/auth/registor", upload.single("picture"), register)
+app.post("/auth/registor", registor)
 
 
 // Connection to the database
