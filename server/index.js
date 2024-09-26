@@ -7,7 +7,9 @@ import morgan from 'morgan';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import router from './routes/auth.js';
+import authRoute from './routes/auth.js';
+import userRoute from './routes/user.js';
+import { verifyToken } from './middleware/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,7 +40,8 @@ app.get('/', (req, res) => {
 
 
 // Routes
-app.use('/auth', router)
+app.use('/auth', authRoute)
+app.use("/users", userRoute)
 
 // Connection to the database
 mongoose.connect(process.env.MONGO_URL)
