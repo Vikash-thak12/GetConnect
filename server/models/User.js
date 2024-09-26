@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         required: true, 
         min: 5
     },
-    picturePath: {
+    picture: {
         type: String, 
         default: ""
     },
@@ -40,6 +40,6 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true})
 
 
-const User = mongoose.model("Users", userSchema)
+const User = mongoose.model("User", userSchema)
 
 export default User
