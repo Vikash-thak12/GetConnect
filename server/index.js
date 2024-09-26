@@ -62,16 +62,6 @@ app.use((req, res) => {
 //     .then(console.log("Connection to the database is done"))
 
 
-// mongoose.connect(process.env.MONGO_URL, {
-//     // useNewUrlParser: true, 
-//     // useUnifiedTopology: true
-// }).then(() => {
-//     app.listen(port, () => {
-//         console.log(`Connection successful to the database`);
-
-//     })
-
-
 // Actual server running 
 app.listen(port, () => {
     console.log(`Server is running on PORT: ${port}`);
