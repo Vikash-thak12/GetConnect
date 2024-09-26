@@ -19,7 +19,9 @@ export const getUserFriends = async (req, res) => {
             user.friends.map((id) => User.findById(id))
         )
         
-        const formattedfriends = await friends.map(({ _id, firstName, lastName, loaction, occupation, picturePath}))
+        const formattedfriends = await friends.map(({ _id, firstName, lastName, location, occupation, picturePath}) => {
+            return {  _id, firstName, lastName, location, occupation, picturePath }
+        })
         res.status(200).json(formattedfriends);
     } catch (error) {
         return res.status(400).json({ Error: error.message})
@@ -47,7 +49,9 @@ export const addRemoveFriend = async (req, res) => {
             user.friends.map((id) => User.findById(id))
         )
         
-        const formattedfriends = await friends.map(({ _id, firstName, lastName, loaction, occupation, picturePath}))
+        const formattedfriends = await friends.map(({ _id, firstName, lastName, location, occupation, picturePath}) => {
+            return {  _id, firstName, lastName, location, occupation, picturePath }
+        })
         res.status(200).json(formattedfriends);
 
 
