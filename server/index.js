@@ -3,12 +3,10 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import multer from 'multer';
 import morgan from 'morgan';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { register } from './controllers/auth.js';
 import router from './routes/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,24 +30,11 @@ app.use(morgan('common'));
 app.use(cors());
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
-// // File Storage
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, 'public/assets');
-//     },
-//     filename: function (req, file, cb) {
-//         cb(null, file.originalname);
-//     }
-// });
-// const upload = multer({ storage });
 
 // Simple route
 app.get('/', (req, res) => {
     res.send('Hello World');
 });
-
-// Register route with file upload
-// app.post('/auth/register', upload.single('picture'), register);
 
 
 // Routes
