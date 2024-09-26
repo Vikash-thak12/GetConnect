@@ -1,6 +1,5 @@
 import User from "../models/User.js";
 import Post from "../models/Post.js"
-import { error } from "console";
 
 
 export const createpost = async (req, res) => {
