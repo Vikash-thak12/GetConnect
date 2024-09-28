@@ -44,8 +44,6 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, "public/assets");
@@ -58,7 +56,6 @@ const storage = multer.diskStorage({
   
   /* ROUTES WITH FILES */
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
-
 
 // Routes
 app.use("/auth", authRoute)
